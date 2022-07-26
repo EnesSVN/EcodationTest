@@ -40,13 +40,21 @@ public class UserService implements IUserService {
 
     //Create
 
-    @PostMapping("users/create")
-    public UserDto createUser(@RequestBody UserDto userDto) {
+    public UserDto createUser(UserDto userDto) {
         String encrytedMasked=passwordEncoder.encode(userDto.getPassword());
         userDto.setPassword(encrytedMasked);
         UserEntity entity=DtoToEntity(userDto);
         userRepository.save(entity);
         return userDto;
+    }
+
+    public List<UserDto> getAllUsers(){
+        List<UserDto> list = new ArrayList<>();
+        Iterable<UserEntity> listem = userRepository.findAll();
+        for (UserEntity userEntity : listem) {
+            list.add(EntityToDto(userEntity));
+        }
+        return list;
     }
 
 
