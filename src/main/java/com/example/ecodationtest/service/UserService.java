@@ -30,9 +30,7 @@ public class UserService {
 
 
 
-    public UserDto EntityToDto(UserEntity userEntity) {
-        return modelMapper.map(userEntity,UserDto.class);
-    }
+
 
     public UserEntity DtoToEntity(UserDto userDto) {
         return modelMapper.map(userDto,UserEntity.class);
