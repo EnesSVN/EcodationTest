@@ -10,10 +10,9 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "users")
-public class userEntity {
+public class userEntity extends BaseEntity {
 
 
 
