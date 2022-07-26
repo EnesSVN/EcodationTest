@@ -14,8 +14,6 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
 
-
-
     @Column(name = "name")
     private String name;
 
@@ -27,7 +25,5 @@ public class UserEntity extends BaseEntity {
 
     @Column(name = "password")
     private String password;
-
-
 
 }
