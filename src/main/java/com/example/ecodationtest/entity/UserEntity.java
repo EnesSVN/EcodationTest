@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class userEntity extends BaseEntity {
+public class UserEntity extends BaseEntity {
 
 
 
