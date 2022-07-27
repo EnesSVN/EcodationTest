@@ -14,4 +14,6 @@ public interface IUserService {
 
     public List<UserDto> getAllUsers();
 
+    public List<UserDto> findAllUser();
+
 }

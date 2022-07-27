@@ -15,22 +15,33 @@ import java.util.List;
 
 public class UserController {
 
-    @Autowired
+
     private IUserService service;
 
+    public UserController(IUserService service) {
+        this.service = service;
+    }
+
+
+    //JPA KULLANIMI
     @PostMapping("/users/create")
     public ResponseEntity<?> createUser(@Valid @RequestBody UserDto userDto) {
        service.createUser(userDto);
         return ResponseEntity.ok().body("User created successfully" + userDto);
     }
 
-
+    //JPA KULLANIMI
     @GetMapping("/users/all")
     public List<UserDto> getAllUsers() {
         List<UserDto> listem = service.getAllUsers();
         return listem;
     }
 
-
+    //NAMED QUERY KULLANIMI
+    @GetMapping("/users/findAll")
+    public List<UserDto> findAllUser() {
+        List<UserDto> listem = service.findAllUser();
+        return listem;
+    }
 
 }

@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Getter
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
+@NamedQuery(name = "UserEntity.findAllUser", query = "SELECT u FROM UserEntity u")
 public class UserEntity extends BaseEntity {
 
     @Column(name = "name")
