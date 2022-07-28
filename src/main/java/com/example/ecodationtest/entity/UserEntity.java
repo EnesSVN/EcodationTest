@@ -3,17 +3,20 @@ package com.example.ecodationtest.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "users")
-@NamedQuery(name = "UserEntity.findAllUser", query = "SELECT u FROM UserEntity u")
+@NamedQueries({
+        @NamedQuery(name = "UserEntity.findAllUser",
+                query = "SELECT u FROM UserEntity u")
+
+})
 public class UserEntity extends BaseEntity {
 
     @Column(name = "name")

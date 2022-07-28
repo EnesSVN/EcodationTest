@@ -12,7 +12,6 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-
 public class UserController {
 
 
@@ -29,6 +28,7 @@ public class UserController {
        service.createUser(userDto);
         return ResponseEntity.ok().body("User created successfully" + userDto);
     }
+
 
     //JPA KULLANIMI
     @GetMapping("/users/all")
