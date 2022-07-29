@@ -28,7 +28,7 @@ public class UserController {
     }
 
 
-    //JPA KULLANIMI
+    //JPA Repository Create
     @PostMapping("/users/create")
     public ResponseEntity<?> createUser(@Valid @RequestBody UserDto userDto) {
        service.createUser(userDto);
@@ -36,19 +36,46 @@ public class UserController {
     }
 
 
-    //JPA KULLANIMI
+    //JPA Repository GetAll
     @GetMapping("/users/all")
     public List<UserDto> getAllUsers() {
         List<UserDto> listem = service.getAllUsers();
         return listem;
     }
 
-    //NAMED QUERY KULLANIMI
+    //JPA Repository GetById
+    @GetMapping("/users/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long id) {
+        ResponseEntity<UserDto> response = service.getUserById(id);
+        return response;
+    }
+
+    //JPA Repository Update
+    @PutMapping("/users/{id}")
+    public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long id, @RequestBody UserDto userDto) {
+        ResponseEntity<UserDto> response = service.updateUser(id, userDto);
+        return response.ok(userDto);
+    }
+
+    //JPA Repository Delete
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable("id") Long id) {
+        service.deleteUser(id);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
+
+
+
+    //NAMED QUERY Create
     @GetMapping("/users/findAll")
     public List<UserDto> findAllUser() {
         List<UserDto> listem = service.findAllUser();
         return listem;
     }
+
+
 
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
