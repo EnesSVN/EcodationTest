@@ -7,3 +7,10 @@ export const createUser = (body) => {
 
 } 
 
+
+export const listUsers = (body) => {
+    return axios
+        .get('http://localhost:8081/users/all',body)
+}
+
+

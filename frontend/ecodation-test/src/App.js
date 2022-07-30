@@ -1,20 +1,12 @@
 import { ToastContainer } from 'react-toastify';
 import CreateUser from './pages/CreateUser';
+import ListUser from './pages/ListUser';
 
 function App() {
   return (
     <div >
-      <ToastContainer
-      position='top-right'
-      autoClose={2000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      pauseOnHover
-      theme='colored'/>
-      <CreateUser />
+      
+      <ListUser />
     </div>
   );
 }
