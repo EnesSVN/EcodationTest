@@ -68,7 +68,7 @@ public class UserController {
 
 
 
-    //NAMED QUERY Create
+    //NAMED QUERY LIST ALL USERS
     @GetMapping("/users/findAll")
     public List<UserDto> findAllUser() {
         List<UserDto> listem = service.findAllUser();
