@@ -22,6 +22,7 @@ public class UserController {
 
     private IUserService service;
 
+
     public UserController(IUserService service) {
         this.service = service;
     }

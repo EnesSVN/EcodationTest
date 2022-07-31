@@ -1,6 +1,8 @@
 package com.example.ecodationtest.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -30,5 +32,6 @@ public class UserDto {
     @NotNull(message = "şifre boş geçilemez.")
     @Size(min = 7, max = 200, message = "şifre min:7 max:200 olabilir")
     @Pattern(regexp = "^[a-zA-Z0-9]{7}")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 }

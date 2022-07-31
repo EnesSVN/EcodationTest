@@ -1,6 +1,8 @@
 package com.example.ecodationtest.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,6 +33,7 @@ public class UserEntity extends BaseEntity {
     private String email;
 
     @Column(name = "password")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
 }

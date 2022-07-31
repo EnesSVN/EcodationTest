@@ -101,7 +101,8 @@ public class UserService implements IUserService {
         List<UserDto> list = new ArrayList<>();
         Iterable<UserEntity> listem = userRepository.findAllUser();
         for (UserEntity userEntity : listem) {
-            list.add(EntityToDto(userEntity));
+            UserDto user = EntityToDto(userEntity);
+            list.add(user);
         }
         return list;
     }
