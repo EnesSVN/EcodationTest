@@ -14,7 +14,9 @@ import javax.persistence.*;
 @Table(name = "users")
 @NamedQueries({
         @NamedQuery(name = "UserEntity.findAllUser",
-                query = "SELECT u FROM UserEntity u")
+                query = "SELECT u FROM UserEntity u"),
+        @NamedQuery(name = "UserEntity.findUserByIdUser",
+                query = "SELECT u FROM UserEntity u WHERE u.id = :id"),
 
 })
 public class UserEntity extends BaseEntity {

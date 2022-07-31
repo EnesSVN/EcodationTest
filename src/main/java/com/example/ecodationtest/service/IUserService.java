@@ -23,6 +23,7 @@ public interface IUserService {
 
     public ResponseEntity <Map<String, Boolean>> deleteUser(Long id);
 
+    public ResponseEntity <UserDto> getUserByIdUser(Long id);
 
 
 

@@ -34,26 +34,25 @@ public class UserService implements IUserService {
     }
 
 
-
     public UserDto EntityToDto(UserEntity userEntity) {
-        return modelMapper.map(userEntity,UserDto.class);
+        return modelMapper.map(userEntity, UserDto.class);
     }
 
     public UserEntity DtoToEntity(UserDto userDto) {
-        return modelMapper.map(userDto,UserEntity.class);
+        return modelMapper.map(userDto, UserEntity.class);
     }
 
     //JpaRepository Create
     public UserDto createUser(UserDto userDto) {
-        String encrytedMasked=passwordEncoder.encode(userDto.getPassword());
+        String encrytedMasked = passwordEncoder.encode(userDto.getPassword());
         userDto.setPassword(encrytedMasked);
-        UserEntity entity=DtoToEntity(userDto);
+        UserEntity entity = DtoToEntity(userDto);
         userRepository.save(entity);
         return userDto;
     }
 
     //JpaRepository GetAll
-    public List<UserDto> getAllUsers(){
+    public List<UserDto> getAllUsers() {
         List<UserDto> list = new ArrayList<>();
         Iterable<UserEntity> listem = userRepository.findAll();
         for (UserEntity userEntity : listem) {
@@ -64,17 +63,17 @@ public class UserService implements IUserService {
 
     //JpaRepository GetById
     public ResponseEntity<UserDto> getUserById(Long id) {
-        UserEntity entity=userRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("user not found"));
-        UserDto userDto=EntityToDto(entity);
+        UserEntity entity = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
+        UserDto userDto = EntityToDto(entity);
         return ResponseEntity.ok(userDto);
     }
 
     //JpaRepository Update
-    public ResponseEntity<UserDto> updateUser(Long id,UserDto userDto) {
+    public ResponseEntity<UserDto> updateUser(Long id, UserDto userDto) {
         UserEntity entity = DtoToEntity(userDto);
         UserEntity userFind = userRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("user not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
 
         userFind.setName(entity.getName());
         userFind.setSurname(entity.getSurname());
@@ -87,19 +86,18 @@ public class UserService implements IUserService {
     }
 
     //JpaRepository Delete
-    public ResponseEntity<Map<String, Boolean>> deleteUser( Long id) {
+    public ResponseEntity<Map<String, Boolean>> deleteUser(Long id) {
         UserEntity userFind = userRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("user not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
         userRepository.delete(userFind);
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("deleted",Boolean.TRUE);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
 
 
-
-        //NamedQuery GetAll
-    public List<UserDto> findAllUser (){
+    //NamedQuery GetAll
+    public List<UserDto> findAllUser() {
         List<UserDto> list = new ArrayList<>();
         Iterable<UserEntity> listem = userRepository.findAllUser();
         for (UserEntity userEntity : listem) {
@@ -108,6 +106,12 @@ public class UserService implements IUserService {
         return list;
     }
 
+    public ResponseEntity<UserDto> getUserByIdUser(Long id) {
+        UserEntity entity = userRepository.findUserByIdUser(id)
+                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
+        UserDto userDto = EntityToDto(entity);
+        return ResponseEntity.ok(userDto);
 
 
     }
+}

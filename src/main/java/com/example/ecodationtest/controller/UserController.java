@@ -4,7 +4,6 @@ package com.example.ecodationtest.controller;
 import com.example.ecodationtest.dto.UserDto;
 import com.example.ecodationtest.exception.ApiResult;
 import com.example.ecodationtest.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -73,6 +72,12 @@ public class UserController {
     public List<UserDto> findAllUser() {
         List<UserDto> listem = service.findAllUser();
         return listem;
+    }
+    //NAMED QUERY GET USER BY ID
+    @GetMapping("/users/findById/{id}")
+    public ResponseEntity<UserDto> findById(@PathVariable("id") Long id) {
+        ResponseEntity<UserDto> user = service.getUserByIdUser(id);
+        return user;
     }
 
 
