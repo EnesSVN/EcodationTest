@@ -95,6 +95,15 @@ public class UserService implements IUserService {
         return ResponseEntity.ok(response);
     }
 
+    public List<UserDto> findUserByNameContainingIgnoreCase(String name) {
+        List<UserDto> list = new ArrayList<>();
+        Iterable<UserEntity> listem = userRepository.findUserByNameContainingIgnoreCase(name);
+        for (UserEntity userEntity : listem) {
+            list.add(EntityToDto(userEntity));
+        }
+        return list;
+    }
+
 
     //NamedQuery GetAll
     public List<UserDto> findAllUser() {

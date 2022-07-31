@@ -66,6 +66,12 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/users")
+    public List<UserDto> findUserByName(@RequestParam("search") String name) {
+        List<UserDto> response = service.findUserByNameContainingIgnoreCase(name);
+        return response;
+    }
+
 
 
     //NAMED QUERY LIST ALL USERS
@@ -87,7 +93,7 @@ public class UserController {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiResult apiResult(MethodArgumentNotValidException exception) {
-        ApiResult apiResult = new ApiResult(400, "/users/create", "null variable");
+        ApiResult apiResult = new ApiResult(400, "/users/create", "Hata oluştu");
         Map<String, String> validationData = new HashMap<>();
         for (FieldError error : exception.getBindingResult().getFieldErrors()) {
             validationData.put(error.getField(), error.getDefaultMessage());

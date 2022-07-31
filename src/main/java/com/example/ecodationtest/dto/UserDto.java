@@ -33,8 +33,7 @@ public class UserDto {
     private String email;
 
     @NotNull(message = "şifre boş geçilemez.")
-    @Size(min = 7, max = 200, message = "şifre min:7 max:200 olabilir")
-    @Pattern(regexp = "^[a-zA-Z0-9]{7}")
+    @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", message = "şifre en az 8 karakter olmalıdır. en az 1 büyük, 1 küçük, 1 sayı ve 1 özel karakter içermelidir.")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 }

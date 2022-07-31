@@ -25,6 +25,8 @@ public interface IUserService {
 
     public ResponseEntity <UserDto> getUserByIdUser(Long id);
 
+    public List<UserDto> findUserByNameContainingIgnoreCase(String name);
+
 
 
     public List<UserDto> findAllUser();
