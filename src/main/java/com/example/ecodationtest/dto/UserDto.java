@@ -4,6 +4,8 @@ package com.example.ecodationtest.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -27,6 +29,7 @@ public class UserDto {
     private String surname;
 
     @NotNull(message = "e-posta boş geçilemez.")
+    @Email(message = "e-posta formatı hatalı.")
     private String email;
 
     @NotNull(message = "şifre boş geçilemez.")
