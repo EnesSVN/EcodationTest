@@ -4,12 +4,10 @@ import com.example.ecodationtest.dto.UserDto;
 import com.example.ecodationtest.entity.UserEntity;
 import com.example.ecodationtest.exception.ResourceNotFoundException;
 import com.example.ecodationtest.repository.UserRepository;
-import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
